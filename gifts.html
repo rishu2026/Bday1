@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎁 Choose Your Gift & Make Payment 🎁</title>
+    <title>🎁 Choose Your Gift & Request Payment 🎁</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -46,13 +46,16 @@
             border-radius: 10px;
             display: inline-block;
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
         }
         input, .file-upload {
             font-size: 16px;
             padding: 10px;
-            width: 80%;
+            width: 90%;
             border: 1px solid #ccc;
             border-radius: 5px;
+            margin-top: 10px;
         }
         .submit-btn {
             font-size: 18px;
@@ -71,45 +74,57 @@
 </head>
 <body>
 
-<h1>🎉 Choose Your Birthday Gift & Make Payment 🎁</h1>
+<h1>🎉 Choose Your Birthday Gift & Request Payment 🎁</h1>
 
 <!-- Flipkart Search Button -->
 <a href="https://www.flipkart.com/search?q=slippers%20for%20girls" class="flipkart-link" target="_blank">🔍 Search Slippers on Flipkart</a>
 
-<!-- UPI Payment Button -->
-<h2>💰 Pay via UPI</h2>
-<p>Use the below UPI ID to make the payment:</p>
-<strong style="font-size: 20px;">7361914042@ybl</strong>
-<br>
-<a href="upi://pay?pa=7361914042@ybl&pn=Birthday%20Gift&mc=0000&tid=123456&tr=9876543210&tn=Birthday%20Gift%20Payment&am=500&cu=INR" class="upi-button">💵 Pay Now</a>
-
-<!-- Form to Submit Payment Screenshot -->
+<!-- UPI Request Form -->
 <div class="form-container">
-    <h2>📸 Upload Payment Screenshot</h2>
-    <p>After making the payment, upload a screenshot:</p>
-    <input type="file" class="file-upload" id="paymentScreenshot" accept="image/*">
+    <h2>💰 Request Payment via UPI</h2>
+    <p>Enter the price of your selected gift:</p>
+    <input type="number" id="giftPrice" placeholder="Enter amount (₹)">
     <br>
-    <button class="submit-btn" onclick="submitPayment()">✅ Submit</button>
+    <button class="upi-button" onclick="requestPayment()">💵 Request Payment</button>
+</div>
+
+<!-- Upload Ordered Gift Screenshot -->
+<div class="form-container">
+    <h2>📸 Upload Ordered Gift Screenshot</h2>
+    <p>After placing your order, upload a screenshot:</p>
+    <input type="file" class="file-upload" id="orderScreenshot" accept="image/*">
+    <br>
+    <button class="submit-btn" onclick="submitOrder()">✅ Submit</button>
 </div>
 
 <div class="instructions">
     <p>💖 How to complete your order:</p>
     <ol>
         <li>Click the **"Search Slippers on Flipkart"** button above.</li>
-        <li>Find a slipper you like and copy its **product link**.</li>
-        <li>Pay the amount via **UPI ID: 7361914042@ybl**.</li>
-        <li>Take a screenshot of the payment and upload it using the form above.</li>
-        <li>Click **Submit** to confirm your payment.</li>
+        <li>Find a slipper you like and place an order.</li>
+        <li>Enter the **price** of your selected gift and click **"Request Payment"**.</li>
+        <li>Take a **screenshot of your order confirmation** and upload it.</li>
+        <li>Click **Submit** to confirm your order.</li>
     </ol>
 </div>
 
 <script>
-    function submitPayment() {
-        let fileInput = document.getElementById("paymentScreenshot");
+    function requestPayment() {
+        let amount = document.getElementById("giftPrice").value;
+        if (amount === "" || amount <= 0) {
+            alert("❌ Please enter a valid amount.");
+            return;
+        }
+        let upiLink = `upi://pay?pa=7361914042@ybl&pn=Birthday%20Gift&mc=0000&tid=123456&tr=9876543210&tn=Birthday%20Gift%20Payment&am=${amount}&cu=INR`;
+        window.location.href = upiLink;
+    }
+
+    function submitOrder() {
+        let fileInput = document.getElementById("orderScreenshot");
         if (fileInput.files.length === 0) {
-            alert("❌ Please upload the payment screenshot before submitting.");
+            alert("❌ Please upload the order screenshot before submitting.");
         } else {
-            alert("✅ Payment screenshot submitted successfully! 🎁");
+            alert("✅ Order screenshot submitted successfully! 🎁");
         }
     }
 </script>
