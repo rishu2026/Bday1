@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎁 Choose Your Gift & Request Payment 🎁</title>
+    <title>🎁 Choose Your Gift & Upload Order Screenshot 🎁</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -18,7 +18,7 @@
             color: #fff;
             padding: 20px 0;
         }
-        .flipkart-link, .upi-button {
+        .flipkart-link {
             font-size: 22px;
             padding: 12px 20px;
             background: #007bff;
@@ -30,7 +30,7 @@
             display: inline-block;
             margin-top: 20px;
         }
-        .flipkart-link:hover, .upi-button:hover {
+        .flipkart-link:hover {
             background: #0056b3;
         }
         .instructions {
@@ -57,7 +57,7 @@
             border-radius: 5px;
             margin-top: 10px;
         }
-        .submit-btn {
+        .submit-btn, .song-btn {
             font-size: 18px;
             padding: 10px 15px;
             background: green;
@@ -70,22 +70,33 @@
         .submit-btn:hover {
             background: darkgreen;
         }
+        .song-btn {
+            background: red;
+        }
+        .song-btn:hover {
+            background: darkred;
+        }
     </style>
 </head>
 <body>
 
-<h1>🎉 Choose Your Birthday Gift & Request Payment 🎁</h1>
+<h1>🎉 Choose Your Birthday Gift & Upload Order Screenshot 🎁</h1>
 
 <!-- Flipkart Search Button -->
 <a href="https://www.flipkart.com/search?q=slippers%20for%20girls" class="flipkart-link" target="_blank">🔍 Search Slippers on Flipkart</a>
 
-<!-- UPI Request Form -->
+<!-- Payment Instructions -->
 <div class="form-container">
-    <h2>💰 Request Payment via UPI</h2>
-    <p>Enter the price of your selected gift:</p>
-    <input type="number" id="giftPrice" placeholder="Enter amount (₹)">
-    <br>
-    <button class="upi-button" onclick="requestPayment()">💵 Request Payment</button>
+    <h2>💰 Payment Instructions</h2>
+    <p>Use the following UPI ID to make the payment:</p>
+    <strong style="font-size: 20px;">7361914042@ybl</strong>
+    <p>📌 Steps:</p>
+    <ol>
+        <li>Copy the **UPI ID** above.</li>
+        <li>Open **Google Pay, PhonePe, or Paytm**.</li>
+        <li>Paste the **UPI ID** and enter the amount.</li>
+        <li>Confirm the payment and take a screenshot.</li>
+    </ol>
 </div>
 
 <!-- Upload Ordered Gift Screenshot -->
@@ -97,28 +108,29 @@
     <button class="submit-btn" onclick="submitOrder()">✅ Submit</button>
 </div>
 
+<!-- Play Dedicated Song -->
+<div class="form-container">
+    <h2>🎶 Special Song for You</h2>
+    <p>Click the play button to listen to **Afreen Afreen**:</p>
+    <button class="song-btn" onclick="playSong()">▶ Play Afreen Afreen</button>
+    <audio id="afreenSong">
+        <source src="https://ia902606.us.archive.org/26/items/afreen-afreen-nusrat-fateh-ali-khan/AFREEN%20AFREEN%20-%20NUSRAT%20FATEH%20ALI%20KHAN.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+
 <div class="instructions">
     <p>💖 How to complete your order:</p>
     <ol>
         <li>Click the **"Search Slippers on Flipkart"** button above.</li>
         <li>Find a slipper you like and place an order.</li>
-        <li>Enter the **price** of your selected gift and click **"Request Payment"**.</li>
+        <li>Make the payment using **UPI ID: 7361914042@ybl**.</li>
         <li>Take a **screenshot of your order confirmation** and upload it.</li>
         <li>Click **Submit** to confirm your order.</li>
     </ol>
 </div>
 
 <script>
-    function requestPayment() {
-        let amount = document.getElementById("giftPrice").value;
-        if (amount === "" || amount <= 0) {
-            alert("❌ Please enter a valid amount.");
-            return;
-        }
-        let upiLink = `upi://pay?pa=7361914042@ybl&pn=Birthday%20Gift&mc=0000&tid=123456&tr=9876543210&tn=Birthday%20Gift%20Payment&am=${amount}&cu=INR`;
-        window.location.href = upiLink;
-    }
-
     function submitOrder() {
         let fileInput = document.getElementById("orderScreenshot");
         if (fileInput.files.length === 0) {
@@ -126,6 +138,11 @@
         } else {
             alert("✅ Order screenshot submitted successfully! 🎁");
         }
+    }
+
+    function playSong() {
+        let song = document.getElementById("afreenSong");
+        song.play();
     }
 </script>
 
