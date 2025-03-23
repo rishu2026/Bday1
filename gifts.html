@@ -18,50 +18,20 @@
             color: #fff;
             padding: 20px 0;
         }
-        .gift-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
-        .gift-item {
-            background: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-        }
-        .gift-item:hover {
-            transform: scale(1.05);
-        }
-        .gift-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .gift-item h3 {
-            font-size: 20px;
-            color: #ff4d88;
-        }
-        .gift-item p {
-            font-size: 16px;
-            color: #555;
-        }
-        .gift-item a {
-            display: inline-block;
-            margin-top: 10px;
+        .flipkart-link {
+            font-size: 22px;
+            padding: 12px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             text-decoration: none;
-            background: #ff4d88;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s;
+            display: inline-block;
+            margin-top: 30px;
         }
-        .gift-item a:hover {
-            background: #cc0052;
+        .flipkart-link:hover {
+            background: #0056b3;
         }
         .instructions {
             font-size: 18px;
@@ -69,37 +39,72 @@
             margin-top: 20px;
             padding: 20px;
         }
+        .form-container {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            font-size: 16px;
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            font-size: 18px;
+            padding: 10px 15px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background: darkgreen;
+        }
     </style>
 </head>
 <body>
 
 <h1>🎉 Choose Your Birthday Gift! 🎁</h1>
 
-<div class="gift-container">
-    <div class="gift-item">
-        <img src="https://example.com/slipper1.jpg" alt="Slipper 1">
-        <h3>Stylish Pink Slippers</h3>
-        <p>Price: ₹399</p>
-        <a href="https://www.flipkart.com/product1" target="_blank">Buy on Flipkart</a>
-    </div>
+<!-- Flipkart Search Button -->
+<a href="https://www.flipkart.com/search?q=slippers%20for%20girls" class="flipkart-link" target="_blank">🔍 Search Slippers on Flipkart</a>
 
-    <div class="gift-item">
-        <img src="https://example.com/slipper2.jpg" alt="Slipper 2">
-        <h3>Comfy Blue Flip-Flops</h3>
-        <p>Price: ₹299</p>
-        <a href="https://www.flipkart.com/product2" target="_blank">Buy on Flipkart</a>
-    </div>
+<!-- Form to Submit Selected Product Link -->
+<div class="form-container">
+    <h2>🛍 Submit Your Selected Product</h2>
+    <p>Paste the Flipkart product link below:</p>
+    <input type="text" id="productLink" placeholder="Enter Flipkart product link here">
+    <br>
+    <button class="submit-btn" onclick="submitLink()">✅ Submit</button>
 </div>
 
 <div class="instructions">
     <p>💖 How to order your gift:</p>
     <ol>
-        <li>Click on the "Buy on Flipkart" button.</li>
-        <li>Select your size and color.</li>
-        <li>Add the item to your cart.</li>
-        <li>Proceed to checkout and complete your purchase.</li>
+        <li>Click the **"Search Slippers on Flipkart"** button above.</li>
+        <li>Find a slipper you like and copy its **product link**.</li>
+        <li>Paste the link in the box above and click **Submit**.</li>
+        <li>I will review your choice and get it for you! 🎁</li>
     </ol>
 </div>
+
+<script>
+    function submitLink() {
+        let link = document.getElementById("productLink").value;
+        if (link === "") {
+            alert("❌ Please enter a product link before submitting.");
+        } else {
+            alert("✅ Your gift choice has been submitted! 🎁");
+        }
+    }
+</script>
 
 </body>
 </html>
