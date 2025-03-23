@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut the Cake 🎂</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffcccb;
+        }
+        .container {
+            margin-top: 10%;
+        }
+        img {
+            width: 300px;
+            cursor: pointer;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            color: white;
+            background: blue;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎂 Happy Birthday Motu! 🎂</h1>
+    <p>Click the cake to cut it!</p>
+    <img src="https://source.unsplash.com/300x300/?birthday-cake" id="cake" onclick="cutCake()">
+    <p id="message" style="font-size: 20px; display: none;">🎉 Yay! Cake is cut! Enjoy your day! 🎉</p>
+    <br>
+    <a href="gifts.html" class="btn">🎁 Open Gifts 🎁</a>
+</div>
+
+<script>
+    function cutCake() {
+        document.getElementById("cake").src = "https://source.unsplash.com/300x300/?cake-slice";
+        document.getElementById("message").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
