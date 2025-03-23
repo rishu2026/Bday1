@@ -6,26 +6,43 @@
     <title>Cut the Cake 🎂</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
             background: #ffcccb;
+            overflow: hidden;
         }
         .container {
             margin-top: 10%;
+            animation: fadeIn 2s ease-in-out;
         }
-        img {
-            width: 300px;
-            cursor: pointer;
+        .cake-container {
+            position: relative;
+            display: inline-block;
+        }
+        #cake {
+            width: 350px;
+            transition: transform 0.5s ease-in-out;
         }
         .btn {
-            font-size: 20px;
-            padding: 10px 20px;
+            font-size: 22px;
+            padding: 12px 24px;
             color: white;
             background: blue;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: darkblue;
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
@@ -33,16 +50,20 @@
 
 <div class="container">
     <h1>🎂 Happy Birthday Motu! 🎂</h1>
-    <p>Click the cake to cut it!</p>
-    <img src="https://source.unsplash.com/300x300/?birthday-cake" id="cake" onclick="cutCake()">
-    <p id="message" style="font-size: 20px; display: none;">🎉 Yay! Cake is cut! Enjoy your day! 🎉</p>
+    <p>Click the button below to cut the cake!</p>
+    <div class="cake-container">
+        <img src="https://source.unsplash.com/400x400/?birthday-cake" id="cake">
+    </div>
+    <br>
+    <button class="btn" onclick="cutCake()">🍰 Cut the Cake 🍰</button>
+    <p id="message" style="font-size: 22px; display: none;">🎉 Yay! Cake is cut! Enjoy your day! 🎉</p>
     <br>
     <a href="gifts.html" class="btn">🎁 Open Gifts 🎁</a>
 </div>
 
 <script>
     function cutCake() {
-        document.getElementById("cake").src = "https://source.unsplash.com/300x300/?cake-slice";
+        document.getElementById("cake").src = "https://source.unsplash.com/400x400/?cake-slice";
         document.getElementById("message").style.display = "block";
     }
 </script>
