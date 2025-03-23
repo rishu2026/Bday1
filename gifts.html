@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎁 Choose Your Gift 🎁</title>
+    <title>🎁 Choose Your Gift & Make Payment 🎁</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -18,7 +18,7 @@
             color: #fff;
             padding: 20px 0;
         }
-        .flipkart-link {
+        .flipkart-link, .upi-button {
             font-size: 22px;
             padding: 12px 20px;
             background: #007bff;
@@ -28,9 +28,9 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            margin-top: 30px;
+            margin-top: 20px;
         }
-        .flipkart-link:hover {
+        .flipkart-link:hover, .upi-button:hover {
             background: #0056b3;
         }
         .instructions {
@@ -47,7 +47,7 @@
             display: inline-block;
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
         }
-        input {
+        input, .file-upload {
             font-size: 16px;
             padding: 10px;
             width: 80%;
@@ -71,37 +71,45 @@
 </head>
 <body>
 
-<h1>🎉 Choose Your Birthday Gift! 🎁</h1>
+<h1>🎉 Choose Your Birthday Gift & Make Payment 🎁</h1>
 
 <!-- Flipkart Search Button -->
 <a href="https://www.flipkart.com/search?q=slippers%20for%20girls" class="flipkart-link" target="_blank">🔍 Search Slippers on Flipkart</a>
 
-<!-- Form to Submit Selected Product Link -->
+<!-- UPI Payment Button -->
+<h2>💰 Pay via UPI</h2>
+<p>Use the below UPI ID to make the payment:</p>
+<strong style="font-size: 20px;">7361914042@ybl</strong>
+<br>
+<a href="upi://pay?pa=7361914042@ybl&pn=Birthday%20Gift&mc=0000&tid=123456&tr=9876543210&tn=Birthday%20Gift%20Payment&am=500&cu=INR" class="upi-button">💵 Pay Now</a>
+
+<!-- Form to Submit Payment Screenshot -->
 <div class="form-container">
-    <h2>🛍 Submit Your Selected Product</h2>
-    <p>Paste the Flipkart product link below:</p>
-    <input type="text" id="productLink" placeholder="Enter Flipkart product link here">
+    <h2>📸 Upload Payment Screenshot</h2>
+    <p>After making the payment, upload a screenshot:</p>
+    <input type="file" class="file-upload" id="paymentScreenshot" accept="image/*">
     <br>
-    <button class="submit-btn" onclick="submitLink()">✅ Submit</button>
+    <button class="submit-btn" onclick="submitPayment()">✅ Submit</button>
 </div>
 
 <div class="instructions">
-    <p>💖 How to order your gift:</p>
+    <p>💖 How to complete your order:</p>
     <ol>
         <li>Click the **"Search Slippers on Flipkart"** button above.</li>
         <li>Find a slipper you like and copy its **product link**.</li>
-        <li>Paste the link in the box above and click **Submit**.</li>
-        <li>I will review your choice and get it for you! 🎁</li>
+        <li>Pay the amount via **UPI ID: 7361914042@ybl**.</li>
+        <li>Take a screenshot of the payment and upload it using the form above.</li>
+        <li>Click **Submit** to confirm your payment.</li>
     </ol>
 </div>
 
 <script>
-    function submitLink() {
-        let link = document.getElementById("productLink").value;
-        if (link === "") {
-            alert("❌ Please enter a product link before submitting.");
+    function submitPayment() {
+        let fileInput = document.getElementById("paymentScreenshot");
+        if (fileInput.files.length === 0) {
+            alert("❌ Please upload the payment screenshot before submitting.");
         } else {
-            alert("✅ Your gift choice has been submitted! 🎁");
+            alert("✅ Payment screenshot submitted successfully! 🎁");
         }
     }
 </script>
