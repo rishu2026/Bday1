@@ -66,6 +66,8 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
         }
         .submit-btn:hover {
             background: darkgreen;
@@ -111,12 +113,8 @@
 <!-- Play Dedicated Song -->
 <div class="form-container">
     <h2>🎶 Special Song for You</h2>
-    <p>Click the play button to listen to **Afreen Afreen**:</p>
-    <button class="song-btn" onclick="playSong()">▶ Play Afreen Afreen</button>
-    <audio id="afreenSong">
-        <source src="https://ia902606.us.archive.org/26/items/afreen-afreen-nusrat-fateh-ali-khan/AFREEN%20AFREEN%20-%20NUSRAT%20FATEH%20ALI%20KHAN.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <p>Click the button below to play **Afreen Afreen**:</p>
+    <a href="https://pagalfree.com/musics/128-Afreen%20Afreen%20-%20Nusrat%20Fateh%20Ali%20Khan%20128%20Kbps.mp3" target="_blank" class="song-btn">▶ Play Afreen Afreen</a>
 </div>
 
 <div class="instructions">
@@ -138,11 +136,6 @@
         } else {
             alert("✅ Order screenshot submitted successfully! 🎁");
         }
-    }
-
-    function playSong() {
-        let song = document.getElementById("afreenSong");
-        song.play();
     }
 </script>
 
